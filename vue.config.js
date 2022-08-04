@@ -1,4 +1,26 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
-  transpileDependencies: true
+  transpileDependencies: true,
+  // 修改 src 目录为 examples
+  pages: {
+    index: {
+      entry: 'examples/main.js',
+      template: 'public/index.html',
+      filename: 'index.html'
+    }
+  },
+  // 扩展webpack 配置，是packages 加入编译
+  chainWebpack: config => {
+    config.module
+      .rule('js')
+      .include
+        .add('/packages')
+        .end()
+      .use('babel')
+        .loader('babel-loader')
+        .tap(options => {
+          // 一些修改
+          return options
+        })
+  }
 })
