@@ -1,0 +1,12 @@
+{
+  "plugins": [
+    [
+      "import",
+      {
+        "libraryName": "guo-ui",
+        "libraryDirectory": "lib"
+      },
+      "guo-ui"
+    ]
+  ]
+}

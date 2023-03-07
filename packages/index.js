@@ -1,12 +1,14 @@
 // 整合所有组件，对外导出
 
-import gButton from "./gButton";
-import gTag from "./gTag";
+import Button from "./button";
+import Tag from "./tag";
+import Slider from "./slider";
 
 
 const components = [
-  gButton,
-  gTag
+  Button,
+  Tag,
+  Slider
 ]
 
 const install = function(Vue) {
@@ -23,11 +25,13 @@ if(typeof window !== 'undefined' && window.Vue) {
 
 export {
   install,
-  gButton,
-  gTag
+  Button,
+  Tag,
+  Slider
 }
 export default {
   install,
-  gButton,
-  gTag
+  Button,
+  Tag,
+  Slider
 }
