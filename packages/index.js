@@ -3,12 +3,13 @@
 import Button from "./button";
 import Tag from "./tag";
 import Slider from "./slider";
-
+import ConfigProvider from "./configProvider";
 
 const components = [
   Button,
   Tag,
-  Slider
+  Slider,
+  ConfigProvider
 ]
 
 const install = function(Vue) {
@@ -27,11 +28,13 @@ export {
   install,
   Button,
   Tag,
-  Slider
+  Slider,
+  ConfigProvider
 }
 export default {
   install,
   Button,
   Tag,
-  Slider
+  Slider,
+  ConfigProvider
 }

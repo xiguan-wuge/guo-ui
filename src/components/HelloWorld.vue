@@ -5,7 +5,13 @@
     <g-button @click="handleButtonClick" :value="buttonValue">buttonValue</g-button>
     <g-tag></g-tag>
     <g-slider></g-slider>
-    <button @click="toggleTheme">切换主题：{{theme}}</button>
+    <p>configProvider包装button:</p>
+    <g-config-provider :themeVar="buttonTheme" className="config-p config-p2">
+      <g-button>inner Button</g-button>
+    </g-config-provider>
+    <button @click="toggleTheme('')">切换主题：{{theme}}</button>
+    <br>
+    <button @click="toggleTheme('green')">切换自定义主题green：{{theme}}</button>
   </div>
 </template>
 
@@ -19,6 +25,11 @@ export default {
     return {
       theme: 'default',
       buttonValue: ''
+    }
+  },
+  created() {
+    this.buttonTheme = {
+      buttonColor: 'blue'
     }
   },
   mounted() {
@@ -61,9 +72,12 @@ export default {
     handleButtonClick() {
       console.log('handleButtonClick')
     },
-    toggleTheme() {
-      this.theme = this.theme === 'default' ? 'dark' : 'default'
-      console.log('切换主题', this.theme);
+    toggleTheme(theme) {
+      if(theme) {
+        this.theme = theme
+      } else {
+        this.theme = this.theme === 'default' ? 'dark' : 'default'
+      }
       this.htmlEl.setAttribute('data-theme', this.theme)
     }
   }
@@ -71,6 +85,7 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style scoped>
 h3 {
   margin: 40px 0 0;
@@ -85,5 +100,18 @@ li {
 }
 a {
   color: #42b983;
+}
+.config-p {
+  display: inline-block;
+}
+.config-p2 {
+  font-size: 18px;
+}
+</style>
+
+<style lang="less">
+// 使用css变量覆盖全局样式
+:root {
+  --g-button-color: red;
 }
 </style>

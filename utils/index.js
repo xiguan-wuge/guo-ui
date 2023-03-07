@@ -1,5 +1,5 @@
 export function createNameSpace(name) {
-  const prefixName = `g-${name}`
+  const prefixName = `g-${kebabCase(name)}`
   return [
     prefixName
   ]
@@ -14,4 +14,12 @@ export function withInstall(component) {
     }
   }
   return component
+}
+
+// 驼峰转横杠
+export function kebabCase(str) {
+  return str
+    .replace(/([A-Z])/g, '-$1')
+    .toLowerCase()
+    .replace(/^-/, '')
 }
