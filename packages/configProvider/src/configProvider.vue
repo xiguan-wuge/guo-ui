@@ -1,9 +1,11 @@
-<template>
-  <div :class="['g-config-provider', className]" :style="cssVars">
-    <slot></slot>
-  </div>
-</template>
+
 <script>
+// <template>
+//   <div :class="['g-config-provider', className]" :style="cssVars">
+//     <slot></slot>
+//   </div>
+// </template>
+
 import {createNameSpace, kebabCase} from 'utils/index.js';
 const [name] = createNameSpace('configProvider');
 
@@ -32,6 +34,18 @@ export default {
       return varsObj
     }
   },
+  render: function(createElement) {
+    return createElement(
+      this.tag,
+      {
+        class: [ 'g-config-provider', this.className ],
+        style: this.cssVars
+      },
+      [
+        this.$slots.default
+      ]
+    )
+  }
   // render() {
   //   return (
   //     <div class="g-config-provider">

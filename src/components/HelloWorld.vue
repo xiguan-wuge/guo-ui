@@ -6,7 +6,7 @@
     <g-tag></g-tag>
     <g-slider></g-slider>
     <p>configProvider包装button:</p>
-    <g-config-provider :themeVar="buttonTheme" className="config-p config-p2">
+    <g-config-provider tag="span" :themeVar="buttonTheme" className="config-p config-p2">
       <g-button>inner Button</g-button>
     </g-config-provider>
     <button @click="toggleTheme('')">切换主题：{{theme}}</button>
