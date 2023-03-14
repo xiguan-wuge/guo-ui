@@ -27,7 +27,6 @@ function getComponentEntries(path) {
 
   return componentEntries;
 }
-
 const buildConfig = {
   //  输出文件目录
   outputDir: resolve("lib"),
@@ -46,7 +45,8 @@ const buildConfig = {
       libraryExport: "default",
       //  引用时的依赖名
       // library: 'laoyan-ui'
-      library: "guo-ui",
+      // library: "guo-ui",
+      library: "guoUI",
     },
     resolve: {
       // 配置路径别名
@@ -68,7 +68,8 @@ const buildConfig = {
   css: {
     sourceMap: false,
     extract: {
-      filename: "[name]/index.css",
+      // filename: "[name]/style/index.css",
+      filename: "[name]/style.css",
     },
   },
   chainWebpack: (config) => {

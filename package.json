@@ -6,14 +6,15 @@
   "keywords": [
     "vue2",
     "mobile",
-    "componetsLib"
+    "componentLib"
   ],
   "private": false,
   "scripts": {
+    "start": "npm run serve",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "lib": "vue-cli-service build --target lib --name guoUI --dest lib packages/index.js"
+    "lib": "vue-cli-service build --mode lib"
   },
   "dependencies": {
     "core-js": "^3.8.3",
