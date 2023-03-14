@@ -4,27 +4,45 @@
 
     <g-button @click="handleButtonClick" :value="buttonValue">buttonValue</g-button>
     <g-tag></g-tag>
-    <g-slider></g-slider>
-    <p>configProvider包装button:</p>
+    <!-- <g-slider></g-slider> -->
+    <!-- <p>configProvider包装button:</p>
     <g-config-provider tag="span" :themeVar="buttonTheme" className="config-p config-p2">
       <g-button>inner Button</g-button>
     </g-config-provider>
     <button @click="toggleTheme('')">切换主题：{{theme}}</button>
     <br>
-    <button @click="toggleTheme('green')">切换自定义主题green：{{theme}}</button>
+    <button @click="toggleTheme('green')">切换自定义主题green：{{theme}}</button> -->
+    <p>测试图片懒加载</p>
+    <img v-for="img in list" v-lazy="img"  class="lazyload-img"/>
+
+    <p>测试组件懒加载</p>
+    <g-lazy-component @show="handleLazyComponent">
+      <g-button @click="handleButtonClick" :value="buttonValue">buttonValueLazy</g-button>
+    </g-lazy-component>
+    <!-- 折叠面板 -->
+    <!-- <g-collapse v-model="activeNames">
+      <g-collapse-item title="标题1" name="1">内容</g-collapse-item>
+      <g-collapse-item title="标题2" name="2">内容</g-collapse-item>
+      <g-collapse-item title="标题3" name="3" disabled>内容</g-collapse-item>
+    </g-collapse> -->
+
   </div>
 </template>
 
 <script>
+import {list} from '@/assets/imageList'
 export default {
   name: 'HelloWorld',
   props: {
     msg: String
   },
+  
   data() {
     return {
       theme: 'default',
-      buttonValue: ''
+      buttonValue: '',
+      list,
+      activeNames: ['1']
     }
   },
   created() {
@@ -34,7 +52,17 @@ export default {
   },
   mounted() {
     this.htmlEl = document.documentElement
-    console.log('htmlEl', this.htmlEl);
+    // 监听系统主题切换
+    this.themeMedia = window.matchMedia("(prefers-color-scheme: light)");
+    console.log('themeMedia', this.themeMedia);
+    this.listner = e => {
+      console.log('e.matches', e.matches);
+      this.theme = e.matches ? 'default' : 'dark'
+      this.toggleTheme(this.theme)
+    }
+    this.themeMedia.addListener(
+      this.listner
+    );
     // 监听 orientation changes
 //     window.addEventListener("orientationchange", function(event) {
 //       console.log('event111', event)
@@ -63,22 +91,27 @@ export default {
 //   }
 // }
 // fire()
-
-
-
-
+  },
+  beforeDestroy() {
+    this.themeMedia.removeListener(
+      this.listner
+    );
   },
   methods: {
     handleButtonClick() {
       console.log('handleButtonClick')
     },
     toggleTheme(theme) {
+      console.log('toggleTheme', theme);
       if(theme) {
         this.theme = theme
       } else {
         this.theme = this.theme === 'default' ? 'dark' : 'default'
       }
       this.htmlEl.setAttribute('data-theme', this.theme)
+    },
+    handleLazyComponent(val) {
+      console.log('handleLazyComponent', val)
     }
   }
 }
@@ -113,5 +146,16 @@ a {
 // 使用css变量覆盖全局样式
 :root {
   --g-button-color: red;
+}
+.lazyload-img {
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  margin-bottom: 16px;
+  padding: 16px;
+  background-color: pink;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  border-radius: 12px;
 }
 </style>

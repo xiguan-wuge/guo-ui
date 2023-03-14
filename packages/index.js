@@ -1,21 +1,31 @@
 // 整合所有组件，对外导出
 
-import Button from "./button";
-import Tag from "./tag";
-import Slider from "./slider";
-import ConfigProvider from "./configProvider";
+import Button from "./Button";
+import Tag from "./Tag";
+import Slider from "./Slider";
+import ConfigProvider from "./ConfigProvider";
+import Lazyload from "./Lazyload";
+import Collapse from "./Collapse";
+import CollapseItem from "./CollapseItem";
 
 const components = [
   Button,
   Tag,
   Slider,
-  ConfigProvider
+  ConfigProvider,
+  Lazyload,
+  Collapse,
+  CollapseItem
 ]
 
 const install = function(Vue) {
   if(install.installed) return
 
-  components.map(comp => Vue.component(comp.name, comp))
+  components.map(comp => {
+    
+    // Vue.component(comp.name, comp)
+    Vue.use(comp)
+  })
 }
 
 
@@ -29,12 +39,17 @@ export {
   Button,
   Tag,
   Slider,
-  ConfigProvider
+  ConfigProvider,
+  Lazyload,
+  Collapse,
+  CollapseItem
 }
 export default {
   install,
   Button,
   Tag,
   Slider,
-  ConfigProvider
+  ConfigProvider,
+  Lazyload,
+  Collapse
 }
