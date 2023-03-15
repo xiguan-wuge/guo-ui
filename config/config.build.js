@@ -1,5 +1,7 @@
 const fs = require("fs");
 const path = require("path");
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+
 const join = path.join;
 //  获取基于当前路径的目标文件
 const resolve = (dir) => path.join(__dirname, "../", dir);
@@ -63,7 +65,10 @@ const buildConfig = {
           ]
         }
       ]
-    }
+    },
+    plugins: [
+      new BundleAnalyzerPlugin()
+    ]
   },
   css: {
     sourceMap: false,
@@ -91,5 +96,6 @@ const buildConfig = {
     config.plugins.delete("hmr");
     config.entryPoints.delete("app");
   },
+  lintOnSave: false
 };
 module.exports = buildConfig;
