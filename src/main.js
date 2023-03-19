@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import App from './App.vue'
+import router from './router'
 
 // 引入打包前的资源
 // import {Button, Tag, Slider, ConfigProvider} from '../packages/index'
@@ -25,5 +26,6 @@ import './style/theme-green.less';
 Vue.config.productionTip = false
 
 new Vue({
+  router,
   render: h => h(App),
 }).$mount('#app')
