@@ -7,6 +7,7 @@ import ConfigProvider from "./ConfigProvider";
 import Lazyload from "./Lazyload";
 import Collapse from "./Collapse";
 import CollapseItem from "./CollapseItem";
+import List from "./List";
 
 const components = [
   Button,
@@ -15,7 +16,8 @@ const components = [
   ConfigProvider,
   Lazyload,
   Collapse,
-  CollapseItem
+  CollapseItem,
+  List,
 ]
 
 const install = function(Vue) {
@@ -42,7 +44,8 @@ export {
   ConfigProvider,
   Lazyload,
   Collapse,
-  CollapseItem
+  CollapseItem,
+  List
 }
 export default {
   install,
@@ -51,5 +54,6 @@ export default {
   Slider,
   ConfigProvider,
   Lazyload,
-  Collapse
+  Collapse,
+  List
 }

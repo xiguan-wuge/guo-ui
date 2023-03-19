@@ -26,6 +26,7 @@ module.exports = {
     resolve: {
       // 配置路径别名
       alias: {
+        'mixins': '/mixins',
         'utils': '/utils'
       }
     },
@@ -36,6 +37,11 @@ module.exports = {
           use: [
             { loader: 'less-loader'}
           ]
+        },
+        {
+          test: /\.jsx$/,
+          loader: 'babel-loader',
+          exclude: /node_modules/
         }
       ]
     }
