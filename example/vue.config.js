@@ -1,4 +1,5 @@
 const { defineConfig } = require('@vue/cli-service')
+const path = require('path')
 module.exports = defineConfig({
   transpileDependencies: true,
   css: {
@@ -15,6 +16,32 @@ module.exports = defineConfig({
       }
     }
   },
+  configureWebpack: {
+    resolve: {
+      // 配置路径别名
+      alias: {
+        // 'mixins': '../mixins',
+        // 'utils': '../utils'
+        'mixins': path.resolve(__dirname, '../', 'mixins'),
+        'utils': path.resolve(__dirname, '../', 'utils')
+      }
+    },
+    module: {
+      rules: [
+        {
+          test: /\.less$/,
+          use: [
+            { loader: 'less-loader'}
+          ]
+        },
+        {
+          test: /\.jsx$/,
+          loader: 'babel-loader',
+          exclude: /node_modules/
+        }
+      ]
+    }
+  }
   // configureWebpack: {
   //   resolve: {
   //     // 配置路径别名
