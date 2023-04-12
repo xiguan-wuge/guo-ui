@@ -8,6 +8,7 @@ import Lazyload from "./Lazyload";
 import Collapse from "./Collapse";
 import CollapseItem from "./CollapseItem";
 import List from "./List";
+import MRouter from "./MRouter";
 
 const components = [
   Button,
@@ -18,6 +19,7 @@ const components = [
   Collapse,
   CollapseItem,
   List,
+  MRouter
 ]
 
 const install = function(Vue) {
@@ -45,7 +47,8 @@ export {
   Lazyload,
   Collapse,
   CollapseItem,
-  List
+  List,
+  MRouter
 }
 export default {
   install,
@@ -55,5 +58,6 @@ export default {
   ConfigProvider,
   Lazyload,
   Collapse,
-  List
+  List,
+  MRouter
 }

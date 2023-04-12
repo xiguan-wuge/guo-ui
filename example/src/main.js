@@ -11,8 +11,34 @@ import router from './router'
 // Vue.use(Button)
 // import { Button, Cell }s from 'vant';
 
-import guoUI from '../../packages/index'
-Vue.use(guoUI)
+// 全局引入
+// import guoUI from '../../packages/index'
+// import guoUI from 'guo-ui'
+// // const guoUI = require('guo-ui').default
+// console.log('guoUI', guoUI);
+// Vue.use(guoUI)
+
+// 按需引入
+import {
+  Button,
+  List,
+  Tag,
+  Lazyload,
+  MRouter
+  // install
+// } from 'guo-ui'
+} from '../../packages/index'
+
+
+// console.log('install', install);
+// import {gFn} from 'guo-ui/Utils'
+
+Vue.use(Button)
+Vue.use(List)
+Vue.use(Tag)
+Vue.use(Lazyload)
+Vue.use(MRouter, router)
+
 
 
 Vue.config.productionTip = false

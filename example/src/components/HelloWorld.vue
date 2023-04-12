@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="hello" ref="scrollContainer">
     <h1>{{ msg }}</h1>
 
     <g-button @click="handleButtonClick" :value="buttonValue">buttonValue</g-button>
@@ -17,7 +17,7 @@
 
     <p>测试组件懒加载</p>
     <g-lazy-component @show="handleLazyComponent" class="week-rank">
-      <g-button @click="handleButtonClick" :value="buttonValue">buttonValueLazy</g-button>
+      <g-button @click="handleButtonClick2" :value="buttonValue">buttonValueLazy</g-button>
     </g-lazy-component>
     <!-- 折叠面板 -->
     <!-- <g-collapse v-model="activeNames">
@@ -25,13 +25,18 @@
       <g-collapse-item title="标题2" name="2">内容</g-collapse-item>
       <g-collapse-item title="标题3" name="3" disabled>内容</g-collapse-item>
     </g-collapse> -->
+    <!-- <wconsole></wconsole> -->
   </div>
 </template>
 
 <script>
 import {list} from '@/assets/imageList'
+// import wconsole from './wconsole/wconsole.vue'
 export default {
   name: 'HelloWorld',
+  components: {
+    // wconsole
+  },
   props: {
     msg: String
   },
@@ -103,6 +108,15 @@ export default {
   methods: {
     handleButtonClick() {
       console.log('handleButtonClick')
+      this.$router.push({
+        name: 'mRouterPage1'
+      })
+    },
+    handleButtonClick2() {
+      console.log('handleButtonClick')
+      this.$router.replace({
+        name: 'mRouterPage1'
+      })
     },
     toggleTheme(theme) {
       console.log('toggleTheme', theme);
@@ -123,6 +137,11 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 
 <style scoped>
+.hello {
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+}
 h3 {
   margin: 40px 0 0;
 }

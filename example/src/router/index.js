@@ -8,13 +8,35 @@ const routes = [
   {
     path: '/',
     name: 'HelloWorld',
-    component: HelloWorld
+    component: HelloWorld,
+    meta: {
+      keppAlive: true
+    }
   },
   {
     path: '/list',
     name: 'List',
-    component: List
+    component: List,
+    meta: {
+      keppAlive: true
+    }
   },
+  {
+    path: '/mRouterPage1',
+    name: 'mRouterPage1',
+    component: () => import('@/views/mRouterPage1.vue'),
+    meta: {
+      keppAlive: true
+    }
+  },
+  {
+    path: '/mRouterPage2',
+    name: 'mRouterPage2',
+    component: () => import('@/views/mRouterPage2.vue'),
+    meta: {
+      keppAlive: true
+    }
+  }
   
 ]
 Vue.use(VueRouter)
