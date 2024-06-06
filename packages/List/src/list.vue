@@ -150,7 +150,7 @@ export default {
       this.check()
     }
     
-    this.initRefresh()
+    // this.initRefresh()
 
     
   },
@@ -301,10 +301,13 @@ export default {
         }
       }
       console.log('ease-distance', distance);
+      // fix: 阻止上拉带来的误移动
+      // if(distance < 0) return -1
       
       return Math.round(distance)
     },
     setStatus(distance, isRefreshLoading) {
+      if(distance === -1) return
       let status;
       if(isRefreshLoading) {
         status = 'loading'

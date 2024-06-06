@@ -16,7 +16,7 @@
     <img v-for="img in list" v-lazy="img"  class="lazyload-img"/>
 
     <p>测试组件懒加载</p>
-    <g-lazy-component @show="handleLazyComponent">
+    <g-lazy-component @show="handleLazyComponent" class="week-rank">
       <g-button @click="handleButtonClick" :value="buttonValue">buttonValueLazy</g-button>
     </g-lazy-component>
     <!-- 折叠面板 -->
@@ -25,7 +25,6 @@
       <g-collapse-item title="标题2" name="2">内容</g-collapse-item>
       <g-collapse-item title="标题3" name="3" disabled>内容</g-collapse-item>
     </g-collapse> -->
-
   </div>
 </template>
 
@@ -93,9 +92,11 @@ export default {
 // fire()
   },
   beforeDestroy() {
-    this.themeMedia.removeListener(
-      this.listner
-    );
+    if(this.themeMedia && typeof this.themeMedia === 'function'){
+      this.themeMedia.removeListener(
+        this.listner
+      );
+    }
   },
   methods: {
     handleButtonClick() {

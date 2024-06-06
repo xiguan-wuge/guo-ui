@@ -222,7 +222,7 @@ export default function Lazy(Vue) {
      */
     _removeListenerTarget(el) {
       this.TargetQueue.forEach((target, index) => {
-        if(targrt.el === el) {
+        if(target.el === el) {
           target.childrenCount--
           if(!target.childrenCount) {
             this._initListen(target.el, false)

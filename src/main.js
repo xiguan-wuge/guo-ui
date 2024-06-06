@@ -8,6 +8,7 @@ import router from './router'
 // import {Button, Tag, Slider, ConfigProvider} from 'guo-ui'
 // import 'guo-ui/lib/index/style.css' // 按需引用未生效，先全局引用
 import guoUI from '../packages/index'
+// import guoUI from 'guo-ui'
 console.log('guoUI', guoUI);
 Vue.use(guoUI)
 

@@ -1,5 +1,9 @@
 const { defineConfig } = require('@vue/cli-service')
 const path = require('path')
+// const VueWConsolePlugin = require('./src/plugins/vue-wconsole-plugin/index')
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
+
+
 module.exports = defineConfig({
   transpileDependencies: true,
   css: {
@@ -40,14 +44,10 @@ module.exports = defineConfig({
           exclude: /node_modules/
         }
       ]
-    }
-  }
-  // configureWebpack: {
-  //   resolve: {
-  //     // 配置路径别名
-  //     alias: {
-  //       'utils': '../utils'
-  //     }
-  //   }
-  // }
+    },
+    plugins: [
+      // process.env.NODE_ENV === "production" && new BundleAnalyzerPlugin({analyzerPort: '8891'})
+      // new VueWConsolePlugin()
+    ]
+  },
 })

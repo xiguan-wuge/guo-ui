@@ -8,3 +8,6 @@ export default {
   name: 'gTag'
 }
 </script>
+<style lang="less">
+@import './index.less';
+</style>

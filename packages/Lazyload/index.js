@@ -3,6 +3,7 @@ import LazyComponent from './src/lazy-component'
 // import LazyContainer from './src/lazy-container'
 // import LazyImage from './src/lazy-image'
 // import {assign} from './src/util'
+import './src/lazy.less'
 
 export default {
   install(Vue, options = {}) {
